@@ -17,7 +17,7 @@ class CompanyViewSet(viewsets.ModelViewSet):
             company = Company.objects.get(pk=pk)
             emps = Employee.objects.filter(company=company)
             emps_serializer = EmployeeSerializer(emps, many=True, context= {'request':request})
-            return Response(emps.serializer.data)
+            return Response(emps_serializer.data)
         except Exception as e:
             print(e)
             return Response({
